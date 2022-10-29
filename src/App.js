@@ -1,5 +1,6 @@
 import './App.css';
 import React, { useState } from 'react'
+import icon from './img.png'
 
 
 const { Configuration, OpenAIApi } = require("openai");
@@ -34,31 +35,37 @@ function App() {
 
 
   return (
-    <div className="App h-screen">
-    <header className='bg-blue-800 p-3 text-white h-1/6'>
-        <h1 className='font-extrabold underline'>The hardest part of programming is naming things.</h1>
-        <p className= 'font-medium '>Give a description of variables, classes, objects and methods etc. and get suggestions
-        </p>
+    <div className="App">
+    <header className='bg-blue-300 p-3 text-purple-900 h-1/6 flex justify-evenly'>
+        <div>
+            <img src={icon} alt='icon'/>
+        </div>
+        <div>
+          <h1 className='font-extrabold underline flex'>The hardest part of programming is naming things.</h1>
+          <p className= 'font-medium flex '>Give a description of variables, classes, objects and methods etc. and get name suggestions
+          </p> 
+        </div>
     </header>
 
-    <main className="h-4/6">
+    <main className="h-4/6 bg-blue-100">
 
-      <div className="input h-1/2">
-      <textarea rows="4" cols="50" onChange={(e) => setQuery(e.target.value)}></textarea>
+      <div className="input">
+      <h1 className='font-black p-3 text-2xl'>Names from Description</h1>
+      <textarea placeholder='enter your description' className='border-2 border-sky-200 p-2' rows="4" cols="50" onChange={(e) => setQuery(e.target.value)}></textarea>
       <button onClick={handleButton} className="block m-auto bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
         Submit
       </button>
       </div>
 
-      <div className="output h-1/2 ">
-      {result}
+      <div className="output ">
+      <textarea className='p-2 mt-6 border-2 border-sky-200' rows="4" cols="50" value={result} placeholder='wait for a few seconds after you submit'></textarea>
       </div>
 
     </main>
 
-    <footer className="h-1/6">
+    <footer className='bg-blue-100'>
 
-        <p>Built with ❤️ by sahit mandapti</p>
+        <p className='p-10'>Built with ❤️ by sahit mandapti</p>
     </footer>  
   </div>
   )
