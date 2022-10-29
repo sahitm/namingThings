@@ -1,12 +1,11 @@
 import './App.css';
 import React, { useState } from 'react'
-// import OPENAI_API_KEY from './apikey'
+
 
 const { Configuration, OpenAIApi } = require("openai");
 
 const configuration = new Configuration({
-  // apiKey: OPENAI_API_KEY,
-     apiKey: "",
+     apiKey: process.env.REACT_APP_OPENAI_API_KEY,
 });
 const openai = new OpenAIApi(configuration);
 
@@ -30,7 +29,6 @@ function App() {
     });
 
     setResult(response.data.choices[0].text)
-    console.log(result)
     
   }
 
@@ -54,7 +52,6 @@ function App() {
 
       <div className="output h-1/2 ">
       {result}
-
       </div>
 
     </main>
